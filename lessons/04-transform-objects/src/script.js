@@ -20,10 +20,16 @@ scene.add(mesh);
 // mesh.position.z = 1;
 mesh.position.set(0.7, -0.6, 1);
 
+// Scale
 // mesh.scale.x = 2;
 // mesh.scale.y = 0.5;
 // mesh.scale.z = 0.5;
 mesh.scale.set(2, 0.5, 0.5);
+
+// Rotation
+mesh.rotation.reorder("YXZ"); // Makes sure Y rotation is applied first, then X and Z.
+mesh.rotation.y = Math.PI * 0.25;
+mesh.rotation.x = Math.PI * 0.25;
 
 // Axes helper
 const axesHelper = new THREE.AxesHelper();
