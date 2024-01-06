@@ -27,9 +27,9 @@ scene.add(camera);
 const axesHelper = new THREE.AxesHelper();
 scene.add(axesHelper);
 
-camera.position.z = 1.5;
-camera.position.x = 1.5;
-camera.position.y = 1.5;
+camera.position.z = 1.8;
+camera.position.x = 1.8;
+camera.position.y = 1.8;
 camera.rotation.reorder("YXZ");
 camera.rotation.x = -Math.PI / 4;
 camera.rotation.y = Math.PI / 4;
