@@ -32,10 +32,16 @@ camera.position.z = 1.8;
 camera.position.x = 1.8;
 camera.position.y = 1.8;
 
+// Object's Position Shorthand
+camera.position.set(1.8, 1.8, 1.8);
+
 // Camera's Rotation
 camera.rotation.reorder("YXZ");
 camera.rotation.x = -Math.PI / 4;
 camera.rotation.y = Math.PI / 4;
+
+// Object's Rotation (Shorthand)
+camera.rotation.set(-Math.PI / 4, Math.PI / 4);
 
 /**
  * Here the camera is looking at the object,
