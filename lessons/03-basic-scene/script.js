@@ -18,18 +18,21 @@ const sizes = {
   height: 600,
 };
 
+// Axes helper
+const axesHelper = new THREE.AxesHelper();
+scene.add(axesHelper);
+
 // Camera
 const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height);
 camera.position.z = 3;
 scene.add(camera);
 
-// Axes helper
-const axesHelper = new THREE.AxesHelper();
-scene.add(axesHelper);
-
+// Camera's Position
 camera.position.z = 1.8;
 camera.position.x = 1.8;
 camera.position.y = 1.8;
+
+// Camera's Rotation
 camera.rotation.reorder("YXZ");
 camera.rotation.x = -Math.PI / 4;
 camera.rotation.y = Math.PI / 4;
@@ -39,7 +42,6 @@ camera.rotation.y = Math.PI / 4;
  * but it is a bit off because the rotation is not exact.
  * We can make it look at the center of the object with lookAt
  */
-
 camera.lookAt(mesh.position);
 
 // Renderer
