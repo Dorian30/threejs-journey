@@ -34,6 +34,14 @@ camera.rotation.reorder("YXZ");
 camera.rotation.x = -Math.PI / 4;
 camera.rotation.y = Math.PI / 4;
 
+/**
+ * Here the camera is looking at the object,
+ * but it is a bit off because the rotation is not exact.
+ * We can make it look at the center of the object with lookAt
+ */
+
+camera.lookAt(mesh.position);
+
 // Renderer
 const renderer = new THREE.WebGLRenderer({ canvas });
 renderer.setSize(sizes.width, sizes.height);
