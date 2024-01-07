@@ -36,7 +36,7 @@ camera.position.y = 1.8;
 camera.position.set(1.8, 1.8, 1.8);
 
 // Camera's Rotation
-camera.rotation.reorder("YXZ");
+camera.rotation.reorder("YXZ"); // ^1
 camera.rotation.x = -Math.PI / 4;
 camera.rotation.y = Math.PI / 4;
 
@@ -48,9 +48,17 @@ camera.rotation.set(-Math.PI / 4, Math.PI / 4);
  * but it is a bit off because the rotation is not exact.
  * We can make it look at the center of the object with lookAt
  */
-camera.lookAt(mesh.position);
+camera.lookAt(mesh.position); // ^2
 
 // Renderer
 const renderer = new THREE.WebGLRenderer({ canvas });
 renderer.setSize(sizes.width, sizes.height);
 renderer.render(scene, camera);
+
+/* -------------------------------------------------------------
+ *                     Footnotes
+ * -------------------------------------------------------------
+ *
+ * ^1: By default the rotation order is `XYZ`, regardless if you programatically change `y` rotation property first.
+ * ^2: The target must be an instance of Vector3 though.
+ */
