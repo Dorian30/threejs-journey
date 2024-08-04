@@ -14,6 +14,12 @@ group.rotation.y = 1;
 scene.add(group);
 
 /**
+ * Length of the group's position vector
+ * It's the distance from the center of the scene to the group
+ */
+console.log(group.position.length());
+
+/**
  * Objects
  */
 const cube1 = new THREE.Mesh(
