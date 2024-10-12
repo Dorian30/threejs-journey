@@ -1,4 +1,5 @@
 import * as THREE from "three";
+import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 
 /**
  * Base
@@ -30,6 +31,14 @@ const camera = new THREE.PerspectiveCamera(
   100
 );
 scene.add(camera);
+
+/**
+ * Controls
+ *
+ * It needs the camera and a DOM element for mouse events.
+ */
+const controls = new OrbitControls(camera, canvas);
+controls.enableDamping = true;
 
 // Orthographic Camera
 // const aspectRatio = sizes.width / sizes.height;
@@ -79,10 +88,13 @@ const tick = () => {
   //   mesh.rotation.y = elapsedTime;
 
   // Update camera
-  camera.position.x = Math.sin(cursor.x * Math.PI * 2) * amplitude;
-  camera.position.z = Math.cos(cursor.x * Math.PI * 2) * amplitude;
-  camera.position.y = cursor.y * 5;
-  camera.lookAt(mesh.position);
+  //   camera.position.x = Math.sin(cursor.x * Math.PI * 2) * amplitude;
+  //   camera.position.z = Math.cos(cursor.x * Math.PI * 2) * amplitude;
+  //   camera.position.y = cursor.y * 5;
+  //   camera.lookAt(mesh.position);
+
+  // Update controls
+  controls.update();
 
   // Render
   renderer.render(scene, camera);
