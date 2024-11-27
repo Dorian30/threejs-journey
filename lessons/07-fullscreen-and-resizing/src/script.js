@@ -19,12 +19,20 @@ const mesh = new THREE.Mesh(geometry, material);
 scene.add(mesh);
 
 /**
- * Sizes
+ * Sizes // Viewport
  */
 const sizes = {
   width: window.innerWidth,
   height: window.innerHeight,
 };
+
+window.addEventListener("dblclick", () => {
+  if (document.fullscreenElement) {
+    document.exitFullscreen();
+  } else {
+    canvas.requestFullscreen();
+  }
+});
 
 window.addEventListener("resize", () => {
   // Update sizes
@@ -37,6 +45,7 @@ window.addEventListener("resize", () => {
 
   // Update renderer
   renderer.setSize(sizes.width, sizes.height);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 });
 
 /**
