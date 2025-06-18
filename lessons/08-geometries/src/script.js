@@ -11,16 +11,22 @@ const canvas = document.querySelector("canvas.webgl");
 const scene = new THREE.Scene();
 
 // Object
-const geometry = new THREE.BoxGeometry(
-  // Size (width, height, depth)
-  1,
-  1,
-  1,
-  // Subdivision or Segments (width, height, depth)
-  2,
-  2,
-  2
-);
+// const geometry = new THREE.BoxGeometry(
+//   // Size (width, height, depth)
+//   1,
+//   1,
+//   1,
+//   // Subdivision or Segments (width, height, depth)
+//   2,
+//   2,
+//   2
+// );
+
+// Custom Geometry with BufferGeometry
+const geometry = new THREE.BufferGeometry();
+const vertices = new Float32Array([0, 0, 0, 1, 0, 0, 0, 1, 0]);
+geometry.setAttribute("position", new THREE.BufferAttribute(vertices, 3));
+
 const material = new THREE.MeshBasicMaterial({
   color: 0xff0000,
   wireframe: true,
