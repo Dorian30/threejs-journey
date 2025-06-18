@@ -23,8 +23,19 @@ const scene = new THREE.Scene();
 // );
 
 // Custom Geometry with BufferGeometry
+// const geometry = new THREE.BufferGeometry();
+// const vertices = new Float32Array([0, 0, 0, 1, 0, 0, 0, 1, 0]);
+// geometry.setAttribute("position", new THREE.BufferAttribute(vertices, 3));
+
+// Multiple Triangles
+const triangles = 50;
 const geometry = new THREE.BufferGeometry();
-const vertices = new Float32Array([0, 0, 0, 1, 0, 0, 0, 1, 0]);
+const vertices = new Float32Array(triangles * 3 * 3); // 1 Triangle = 3 vertices = 9 coordinates
+
+for (let i = 0; i < vertices.length; i++) {
+  vertices[i] = Math.random();
+}
+
 geometry.setAttribute("position", new THREE.BufferAttribute(vertices, 3));
 
 const material = new THREE.MeshBasicMaterial({
