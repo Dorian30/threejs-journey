@@ -23,7 +23,10 @@ const scene = new THREE.Scene();
  */
 debugObject.color = "#ff0000"; // We need to keep the color outside Threejs color management to avoid unexpected results when using the GUI
 const geometry = new THREE.BoxGeometry(1, 1, 1, 2, 2, 2);
-const material = new THREE.MeshBasicMaterial({ color: debugObject.color });
+const material = new THREE.MeshBasicMaterial({
+  color: debugObject.color,
+  wireframe: true,
+});
 const mesh = new THREE.Mesh(geometry, material);
 scene.add(mesh);
 
@@ -53,6 +56,19 @@ debugObject.spin = () =>
   gsap.to(mesh.rotation, { y: mesh.rotation.y + 2 * Math.PI });
 
 gui.add(debugObject, "spin");
+
+debugObject.subdivision = 2; // We'll use the same for width, height, and depth
+
+// prettier-ignore
+gui.add(debugObject, 'subdivision')
+  .min(1)
+  .max(20)
+  .step(1)
+  .onFinishChange((value) => {
+    // Before setting a new geometry we free the resources allocated by the old ones.
+    mesh.geometry.dispose();
+    mesh.geometry = new THREE.BoxGeometry(1, 1, 1, value, value, value)
+  });
 
 let test = 1;
 gui.add({ test }, "test");
